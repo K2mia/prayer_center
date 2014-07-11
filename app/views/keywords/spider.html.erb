@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Starting Spider</h1>
+
+<p>
+  <b>Keys:</b>
+  <%= @keyword.keys %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @keyword.user.name, root_path %>
+</p>
+
+
+<% if @card_ids && @card_ids.any? %>
+  <% (0 .. 4).each do |i| %>
+  <%    cid = @card_ids[i] %>
+  <%    curl = @card_urls[cid] %>
+  <%    cdet = @card_details[cid] %>
+    <p>
+      [<%= cid %>] <%= link_to curl, curl %> 
+      <ul>
+        <%= raw(cdet) %> 
+      </ul>
+    </p> 
+  <% end %>
+<% end %>
+

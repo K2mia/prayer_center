@@ -1,0 +1,25 @@
+<% provide( :title, @user.name ) %>
+
+<h1><%= @user.name %></h1>
+
+<div class='row'>
+  <aside class='span4'>
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+  
+  <div class='span8'>
+    <% if @user.keywords.any? %>
+      <h3>Keywords ( <%= @user.keywords.count %> )</h3>
+      <ol>
+        <%= render @keywords %>
+      </ol>
+      <%= will_paginate @keywords %>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,1 @@
+{"label"=>"Parlophone ‎– 1041771", "format"=>"Vinyl, LP, Album, Reissue", "country"=>"Portugal", "released"=>" ", "genre"=>"Rock", "style"=>"Rock & Roll, Pop Rock, Psychedelic Rock"}

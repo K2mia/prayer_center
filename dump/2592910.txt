@@ -1,0 +1,1 @@
+{"label"=>"EMI ‎– PCSO.7027,             Parlophone ‎– PCSO.7027,             EMI Records Australia ‎– PCSO.7027", "format"=>"Vinyl, LP, Album, Stereo", "country"=>"Australia", "released"=>" ", "genre"=>"Rock, Pop", "style"=>"Pop Rock, Psychedelic Rock"}
