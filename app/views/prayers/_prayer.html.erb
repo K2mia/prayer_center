@@ -1,0 +1,23 @@
+
+<% if current_user?( prayer.user ) || prayer.public? %>
+  <li>
+  <span class='keys_content'>
+    <%= prayer.prayer %>
+    <% if current_user?( prayer.user ) %>
+      <a href="javascript:show_div('#edit_form_<%= prayer.id.to_s %>');">[edit]</a>
+
+      <div id='edit_form_<%= prayer.id.to_s %>' style='display:none; margin:10px;'>
+        <b>Edit your prayer</b>:
+        <a href="javascript:hide_div('#edit_form_<%= prayer.id.to_s %>');">close</a><br />
+
+          <%= render :partial => 'shared/prayer_edit_form', :locals => { :prayer =>  prayer } %>
+
+      </div>	<!-- #edit_form_prayer.id -->
+    <% end %>	<!-- if current_user? (prayer.user ) -->
+  </span>
+  <span class='timestamp'>
+    Prayer request submitted <%= time_ago_in_words( prayer.created_at ) %> ago.
+  </span>
+  </li>
+  <br />
+<%end %>

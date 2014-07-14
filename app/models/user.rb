@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
   has_many :keywords, dependent: :destroy
+  has_many :prayers, dependent: :destroy
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
@@ -28,7 +29,8 @@ class User < ActiveRecord::Base
 
   # Method to return all keywords created by this user
   def feed
-    Keyword.where( "user_id = ?", id )
+    #Keyword.where( "user_id = ?", id )
+    Prayer.where( "user_id = ?", id )
   end
 
 

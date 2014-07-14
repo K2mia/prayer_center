@@ -13,12 +13,17 @@
   </aside>
   
   <div class='span8'>
-    <% if @user.keywords.any? %>
-      <h3>Keywords ( <%= @user.keywords.count %> )</h3>
+    <% if @user.prayers.any? %>
+      <% if current_user?( @user ) %>
+        <h3 style='margin-bottom:15px;'><%= @user.prayers.count %> prayers submitted</h3>
+      <% else %>
+        <h3 style='margin-bottom:15px;'><%= @user.prayers.count %> prayers submitted ( some may be private and not viewable by you )</h3>
+      <% end %>
+
       <ol>
-        <%= render @keywords %>
+        <%= render @prayers %>
       </ol>
-      <%= will_paginate @keywords %>
+      <%= will_paginate @prayers %>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,23 @@
+        <%= form_for( prayer ) do |f| %>
+        <div class='field' style='margin-bottom:15px;' >
+          <%= f.text_area :prayer, :size => "30x8", placeholder: 'Please type your prayer into this box' %>
+
+          <span class='form_ttip' title="Please specify whether you are submitting a prayer request or a prayer reminder">What type of prayer is this?</span>
+          <%= f.radio_button :ptype, 1 %> Prayer Request 
+          <%= f.radio_button :ptype, 2 %> Prayer Reminder 
+
+          <br /><br />
+
+          <span class='form_ttip' title='This option is applicable only for prayer requests: Do you want your prayer to appear on the front page to everyone, or is this request for the prayer team only?' >Is this prayer visible to the public?</span>
+          <%= f.radio_button :public, false %> No
+          <%= f.radio_button :public, true %> Yes
+
+          <br /><br />
+
+          <span class='form_ttip' title='This option is applicable only for prayer requests: Do you want your prayer to appear with your name and a link to your profile?'>Post this prayer anonymously?</span>
+          <%= f.radio_button :anon, false %> No
+          <%= f.radio_button :anon, true %> Yes
+        </div>
+
+        <%= f.submit 'Edit Prayer', class: 'btn btn-large btn-primary' %>
+        <% end %>

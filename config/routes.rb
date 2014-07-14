@@ -3,6 +3,7 @@ Discogs::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :keywords, only: [:create, :destroy]
+  resources :prayers, only: [:create, :destroy, :update]
 
   #get "users/new"
 

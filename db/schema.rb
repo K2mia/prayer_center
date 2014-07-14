@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140711171236) do
+ActiveRecord::Schema.define(:version => 20140712163717) do
 
   create_table "keywords", :force => true do |t|
     t.string   "keys"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20140711171236) do
     t.boolean  "public"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "anon"
   end
 
   add_index "prayers", ["prayer"], :name => "index_prayers_on_prayer"

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       # Successful save
       sign_in @user
-      flash.now[:success] = 'Welcome to the Prayer Reminder Service'
+      flash.now[:success] = 'Welcome to the Prayer Center'
       redirect_to @user
     else
       render 'new'
@@ -34,7 +34,8 @@ class UsersController < ApplicationController
   # Display single user profile
   def show
      @user = User.find( params[:id] )
-     @keywords = @user.keywords.paginate( page: params[:page] )
+     #@keywords = @user.keywords.paginate( page: params[:page] )
+     @prayers = @user.prayers.paginate( page: params[:page] )
   end
 
 

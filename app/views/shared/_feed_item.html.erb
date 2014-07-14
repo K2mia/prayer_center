@@ -1,35 +1,31 @@
 
 <li id="<%= feed_item.id %>">
-  <%= link_to gravatar_for(feed_item.user), feed_item.user %>
-  <span class='user'>
-    <%= link_to feed_item.user.name, feed_item.user %>
-  </span>
+  <% if feed_item.anon? %>
+    <span class='user'>
+      <b>Posted anonymously</b>:
+    </span>
+  <% else %>
+    <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+    <span class='user'>
+      <%= link_to feed_item.user.name, feed_item.user %>:
+    </span>
+  <% end %>
   <span class='keys_content'>
-    <%= feed_item.keys %>
+    <%= feed_item.prayer %> 
+
     <% if current_user?( feed_item.user ) %>
-      &nbsp; [
-      <% if feed_item.releases.count == 0 %>
-         <%= link_to 'Start Discogs Spider', :controller => 'keywords', 
-                                       :action => 'spider', 
-                                       :id => feed_item.id  %>
-         &nbsp; - &nbsp;
-      <% end %>
+      <!-- user-specific stuff here -->
 
-      <%= link_to 'Delete Keyword', feed_item, method: :delete,
-                                   confirm: 'Delete keyword?',
-                                   title: "confirm delete: #{feed_item.keys}" %>
-      ]
-    <% end %>
-  </span>
+      <a href="javascript:show_div('#edit_form_<%= feed_item.id.to_s %>');">[edit]</a>
 
-  <span class='dsearchcount'>
-    <% if feed_item.releases.count > 0 %>
-       <%= link_to feed_item.releases.count.to_s + ' search results from Discogs', action: 'show_releases', controller: 'keywords', id: feed_item %>
-    <% else %>
-       <%= feed_item.releases.count.to_s + ' search results from Discogs' %>
-    <% end %>
-    /
-    <%= feed_item.prices.count.to_s + ' prices from Ebay listings' %>
+      <div id='edit_form_<%= feed_item.id.to_s %>' style='display:none; margin:10px;'>
+        <b>Edit your prayer</b>:
+        <a href="javascript:hide_div('#edit_form_<%= feed_item.id.to_s %>');">close</a><br />
+
+          <%= render :partial => 'shared/prayer_edit_form', :locals => { :prayer => feed_item } %>
+
+      </div>    <!-- #edit_form_prayer.id -->
+    <% end %>   <!-- if current_user? (prayer.user ) -->
   </span>
 
   <span class='timestamp'>
